@@ -15,7 +15,10 @@
   <p><%= @product.description %></p>
 
   <h2>Precio</h2>
-  <p>$<%= @product.price %></p>
+  <p><%= format_price @product.price %></p>
 
+  <%= link_to @product, method: :delete do %>
+    <button type="button" class="btn btn-danger">Eliminar</button>
+  <% end %>
   <button type="button" class="btn btn-success">Comprar</button>
 </div>
