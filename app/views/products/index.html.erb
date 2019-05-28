@@ -1,27 +1,25 @@
-<div class="container">
-  <% if current_user.present? && current_user.admin %>
-    <div class="row mb-5">
-      <%= link_to new_product_path do %>
-        <button type="button" class="btn btn-primary">
-          <%= fa_icon 'plus-circle' %>
-          Añadir Producto
-        </button>
-      <% end %>
-    </div>
-  <% end %>
-
-  <div class="row">
-    <% Product.all.each do |product| %>
-      <div class="card bg-light mb-4 mr-4" style="width: 18rem">
-        <%= link_to product do %>
-          <%= image_tag product.images.first.variant(resize: '400x400'), class: 'card-img-top' %>
-        <% end %>
-        <div class="card-body">
-          <h5 class="card-title"><%= product.name %></h5>
-          <h6 class="card-subtitle mb-2 text-muted"><%= format_price product.price %></h6>
-          <p class="card-test"><%= crop_text product.description %></p>
-        </div>
-      </div>
+<% if current_user.present? && current_user.admin %>
+  <div class="row mb-5">
+    <%= link_to new_product_path do %>
+      <button type="button" class="btn btn-primary">
+        <%= fa_icon 'plus-circle' %>
+        Añadir Producto
+      </button>
     <% end %>
   </div>
+<% end %>
+
+<div class="row">
+  <% Product.all.each do |product| %>
+    <div class="card bg-light mb-4 mr-4" style="width: 18rem">
+      <%= link_to product do %>
+        <%= image_tag product.images.first.variant(resize: '400x400'), class: 'card-img-top' %>
+      <% end %>
+      <div class="card-body">
+        <h5 class="card-title"><%= product.name %></h5>
+        <h6 class="card-subtitle mb-2 text-muted"><%= format_price product.price %></h6>
+        <p class="card-test"><%= crop_text product.description %></p>
+      </div>
+    </div>
+  <% end %>
 </div>

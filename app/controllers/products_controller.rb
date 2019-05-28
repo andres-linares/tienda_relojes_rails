@@ -11,13 +11,19 @@ class ProductsController < ApplicationController
       @product = Product.new
     end
 
+    def edit
+      @product = product
+    end
+
     def create
       @product = Product.new(product_params)
 
-      if @product.save
+      if @product.validate(params[:product])
+        @product.save
         redirect_to @product
       else
-
+        flash[:danger] = 'Los detalles del producto no son validos.'
+        render :edit
       end
     end
 
