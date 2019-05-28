@@ -3,16 +3,29 @@ class ProductsController < ApplicationController
 
     end
 
-    def new
+    def show
+      @product = product
+    end
 
+    def new
+      @product = Product.new
     end
 
     def create
-      puts params
       @product = Product.new(product_params)
+
+      if @product.save
+        redirect_to @product
+      else
+
+      end
     end
 
     private
+    def product
+      @product ||= Product.find(params[:id])
+    end
+
     def product_params
       params.require(:product).permit(:name, :description, :price, images: [])
     end

@@ -1,0 +1,21 @@
+<div class="container">
+  <h1><%= @product.name %></h1>
+  
+  <div class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <% @product.images.each do |image| %>
+        <div class="carousel-item <%= image == @product.images.first ? 'active' : '' %>">
+          <%= image_tag image, class: 'd-block w-50' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <h2>Descripción</h2>
+  <p><%= @product.description %></p>
+
+  <h2>Precio</h2>
+  <p>$<%= @product.price %></p>
+
+  <button type="button" class="btn btn-success">Comprar</button>
+</div>
