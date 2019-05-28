@@ -15,7 +15,7 @@
       <div class="input-group-prepend">
         <span class="input-group-text">$</span>
       </div>
-      <%= form.number_field :price, class: "form-control", placeholder: '999' %>
+      <%= form.number_field :price, class: "form-control", placeholder: '999.999,00' %>
     </div>
   </div>
 
@@ -24,7 +24,13 @@
     <%= form.file_field :images, multiple: true, class: 'form-control-file' %>
   </div>
 
+  <% if @product.persisted? && @product.images.any? %>
+    <% @product.images.each do |image| %>
+      <%= image_tag image.variant(resize: '400x400')%>
+    <% end %>
+  <% end%>
+
   <div>
-    <%= form.submit 'Añadir Producto', class: 'btn btn-primary' %>
+    <%= form.submit 'Guardar Producto', class: 'btn btn-primary' %>
   </div>
 <% end %>
