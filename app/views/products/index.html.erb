@@ -12,6 +12,12 @@
 <div class="row">
   <% Product.all.each do |product| %>
     <div class="card bg-light mb-4 mr-4" style="width: 18rem">
+      <% if product.discount && product.discount > 0 %>
+        <span class="price-badge">
+          <%= product.discount %>% Descuento
+        </span>
+      <% end %>
+
       <%= link_to product do %>
         <%= image_tag product.images.first.variant(resize: '400x400'), class: 'card-img-top' %>
       <% end %>
