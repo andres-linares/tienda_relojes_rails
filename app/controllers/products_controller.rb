@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
     before_action :set_paper_trail_whodunnit
-    
+
     def index
 
     end
@@ -53,6 +53,6 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-      params.require(:product).permit(:name, :description, :price, :brand_id, images: [])
+      params.require(:product).permit(:name, :description, :price, :brand_id, :discount, images: [])
     end
 end

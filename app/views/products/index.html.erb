@@ -18,7 +18,14 @@
       <div class="card-body">
         <h6 class="card-subtitle mb-2"><%= product.brand.name.upcase %></h6>
         <h5 class="card-title"><%= product.name %></h5>
-        <h6 class="card-subtitle mb-2 text-muted"><%= format_price product.price %></h6>
+
+        <% if product.discount && product.discount > 0 %>
+          <h6 class="card-subtitle mb-2 text-muted original-price"><%= format_price product.price %></h6>
+          <h6 class="card-subtitle mb-2 text-muted price-with-discount"><%= format_price(apply_discount product.price, product.discount) %></h6>
+        <% else %>
+          <h6 class="card-subtitle mb-2 text-muted"><%= format_price product.price %></h6>
+        <% end %>
+
         <p class="card-test"><%= crop_text product.description %></p>
       </div>
     </div>

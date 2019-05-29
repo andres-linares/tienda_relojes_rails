@@ -40,7 +40,12 @@
   <p><%= @product.description %></p>
 
   <h2>Precio</h2>
-  <p><%= format_price @product.price %></p>
+  <% if @product.discount && @product.discount > 0 %>
+    <p class="original-price mb-0"><%= format_price @product.price %></p>
+    <p class="price-with-discount"><%= format_price(apply_discount @product.price, @product.discount) %></p>
+  <% else %>
+    <p><%= format_price @product.price %></p>
+  <% end %>
 
   <% if current_user.present? && current_user.admin %>
     <%= link_to @product, method: :delete do %>
