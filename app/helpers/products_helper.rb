@@ -4,6 +4,6 @@ module ProductsHelper
   end
 
   def crop_text text
-    text.truncate(66)
+    text.truncate(61)
   end
 end
