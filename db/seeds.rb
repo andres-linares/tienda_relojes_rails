@@ -28,7 +28,7 @@ product_1 = Product.create(
   name: 'T-Race',
   description: 'El Tissot T-Race es un ganador dentro y fuera del circuito. Los detalles de diseño inspirados en las carreras de bicicletas y el estilo dinámico, con una pequeña dosis de colores extravagantes, ponen a estos modelos en marcha y les da una posición inicial igualmente fuerte. Con Tissot T-Race, la pasión de Tissot por el deporte del motor se está acelerando en el carril rápido de la moda.',
   price: 2706000,
-  brand_id: Brand.find_by_name('Tissot').id
+  brand: Brand.find_by_name('Tissot')
 )
 product_1.images.attach(io: File.open('clock_images/1/1.jpg'), filename: '1.jpg')
 product_1.images.attach(io: File.open('clock_images/1/2.jpg'), filename: '2.jpg')
