@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+    before_action :set_paper_trail_whodunnit
+    
     def index
 
     end
@@ -28,7 +30,14 @@ class ProductsController < ApplicationController
     end
 
     def update
+      @product = product
 
+      if @product.update product_params
+        redirect_to @product
+      else
+        flash[:danger] = "El producto no pudo ser actualizado."
+        render :edit
+      end
     end
 
     def destroy
@@ -44,6 +53,6 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-      params.require(:product).permit(:name, :description, :price, images: [])
+      params.require(:product).permit(:name, :description, :price, :brand_id, images: [])
     end
 end

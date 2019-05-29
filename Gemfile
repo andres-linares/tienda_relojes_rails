@@ -40,6 +40,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # I don't kwnow what this is, but it's ok
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 
+# For tracking changes of models
+gem 'paper_trail'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

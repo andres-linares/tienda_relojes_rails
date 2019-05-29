@@ -4,7 +4,12 @@
     <%= form.text_field :name, class: "form-control", placeholder: 'Escriba el nombre del producto' %>
   </div>
 
-  <div calss="form-group">
+  <div class="form-group">
+    <%= form.label :brand_id, 'Marca' %>
+    <%= form.collection_select :brand_id, Brand.all, :id, :name, { prompt: false }, { class: 'form-control' } %>
+  </div>
+
+  <div class="form-group">
     <%= form.label :description, 'Descripción' %>
     <%= form.text_area :description, class: "form-control", placeholder: 'Escriba una descripción del producto' %>
   </div>
