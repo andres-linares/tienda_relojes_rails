@@ -12,7 +12,11 @@
       <ul class="list-group list-group-flush">
         <% @product.versions.each do |version| %>
           <li class="list-group-item">
-            <%= User.find(version.whodunnit).email %>
+            <% if version.whodunnit %>
+              <%= User.find(version.whodunnit).email %>
+            <% else %>
+              Sistema
+            <% end %>
             <strong><%= version.event.upcase %></strong>
             <%= version.created_at.localtime.to_date %>
           </li>
