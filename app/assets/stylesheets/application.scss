@@ -13,9 +13,13 @@
  */
 @import "bootstrap";
 @import "font-awesome";
+
+$primary-color: #808080;
+
 @import "./products.scss";
 @import "./devise.scss";
 
 body {
   background: #f5f6f7;
 }
+
