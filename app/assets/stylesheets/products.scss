@@ -21,3 +21,16 @@
   width: 6.6rem;
   text-align: center;
 }
+
+.purchases {
+  list-style-type: none;
+  padding-left: 20px;
+  max-height: 150px;
+  overflow: auto;
+
+  .purchases__element {
+    margin-top: 1rem;
+    border-bottom: solid 1px #ccc;
+    padding-bottom: .3rem;
+  }
+}

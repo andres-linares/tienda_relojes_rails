@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_29_215814) do
+ActiveRecord::Schema.define(version: 2019_08_20_050018) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,10 @@ ActiveRecord::Schema.define(version: 2019_05_29_215814) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "brand_backup", id: :integer, default: nil, force: :cascade do |t|
+    t.string "name", limit: 45
+  end
+
   create_table "brands", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -52,6 +56,26 @@ ActiveRecord::Schema.define(version: 2019_05_29_215814) do
     t.bigint "brand_id", null: false
     t.integer "discount"
     t.index ["brand_id"], name: "index_products_on_brand_id"
+  end
+
+  create_table "products_backup", id: :integer, default: nil, force: :cascade do |t|
+    t.string "name", limit: 45
+    t.string "description", limit: 1000
+    t.float "price"
+    t.integer "brand_id"
+  end
+
+  create_table "purchases", force: :cascade do |t|
+    t.bigint "product_id"
+    t.bigint "user_id"
+    t.float "product_price"
+    t.float "product_discount"
+    t.string "address"
+    t.string "telephone"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_purchases_on_product_id"
+    t.index ["user_id"], name: "index_purchases_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -79,4 +103,6 @@ ActiveRecord::Schema.define(version: 2019_05_29_215814) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "products", "brands"
+  add_foreign_key "purchases", "products"
+  add_foreign_key "purchases", "users"
 end

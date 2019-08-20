@@ -1,0 +1,46 @@
+<%= form_with model: purchase, local: true, url: product_purchases_path do |form| %>
+  <% if purchase.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(purchase.errors.count, "error") %> prohibited this purchase from being saved:</h2>
+
+      <ul>
+        <% purchase.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h6><%= @product.brand.name.upcase %></h6>
+  <h1><%= @product.name %></h1>
+  <%= image_tag @product.images.first.variant(resize: '500x500') %>
+
+  <div class="form-group">
+    <%= form.label :product_price, "Precio" %>
+    <%= form.text_field :product_price, class: 'form-control', value: format_price(@product.price), readonly: true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :product_discount, "Descuento" %>
+    <%= form.text_field :product_discount, class: 'form-control', value: @product.discount.present? ? @product.discount : 0, readonly: true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :total_price, "Precio con descuento" %>
+    <%= form.text_field :total_price, class: 'form-control', value: format_price(@product.discount.present? ? apply_discount(@product.price, @product.discount) : @product.price), readonly: true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :address, "Dirección" %>
+    <%= form.text_field :address, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :telephone, "Teléfono" %>
+    <%= form.text_field :telephone, class: 'form-control' %>
+  </div>
+
+  <div>
+    <%= form.submit "Realizar compra", class: 'btn btn-primary' %>
+  </div>
+<% end %>

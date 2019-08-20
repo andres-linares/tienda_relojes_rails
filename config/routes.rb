@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   root 'products#index'
   get 'about' => 'pages#about'
 
-  resources :products
+  resources :products do
+    resources :purchases, only: [:index, :new, :create]
+  end
 end
