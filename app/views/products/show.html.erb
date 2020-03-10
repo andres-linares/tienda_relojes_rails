@@ -2,9 +2,11 @@
   <h6><%= @product.brand.name.upcase %></h6>
   <h1><%= @product.name %></h1>
 
-  <button type="button" class="btn btn-outline-info mb-1" data-toggle="collapse" data-target="#history">
-    Ver historial
-  </button>
+  <% if current_user.admin %>
+    <button type="button" class="btn btn-outline-info mb-1" data-toggle="collapse" data-target="#history">
+      Ver historial
+    </button>
+  <% end %>
 
   <div class="collapse mb-1" id="history">
     <div class="card card-body">
