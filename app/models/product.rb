@@ -9,6 +9,6 @@ class Product < ApplicationRecord
   validates :price, presence: true
   # validates :images, presence: true
 
-  has_many :purchases
+  has_many :purchases, dependent: :destroy
   has_many :users, through: :purchases
 end
