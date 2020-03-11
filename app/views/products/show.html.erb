@@ -2,7 +2,7 @@
   <h6><%= @product.brand.name.upcase %></h6>
   <h1><%= @product.name %></h1>
 
-  <% if current_user.admin %>
+  <% if current_user.present? && current_user.admin %>
     <button type="button" class="btn btn-outline-info mb-1" data-toggle="collapse" data-target="#history">
       Ver historial
     </button>
