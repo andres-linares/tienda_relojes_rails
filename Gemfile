@@ -36,7 +36,7 @@ gem 'font-awesome-rails'
 gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.4.2', require: false
+gem 'bootsnap', '>= 1.4.2', '< 1.4.4', require: false
 
 # I don't kwnow what this is, but it's ok
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
