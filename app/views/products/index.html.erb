@@ -13,26 +13,26 @@
   <% Product.all.each do |product| %>
     <div class="card bg-light mb-4 mr-4" style="width: 18rem">
       <% if product.discount && product.discount > 0 %>
-        <span class="price-badge" aria-label="Product current discount">
+        <span class="price-badge" aria-label="Descuento del producto actual">
           <%= product.discount %>% Descuento
         </span>
       <% end %>
 
       <%= link_to product do %>
-        <%= image_tag product.images.first.variant(resize: '400x400'), class: 'card-img-top', alt: "watch: #{ product.brand.name }" %>
+        <%= image_tag product.images.first.variant(resize: '400x400'), class: 'card-img-top', alt: "Reloj: #{ product.brand.name }" %>
       <% end %>
       <div class="card-body">
-        <h6 class="card-subtitle mb-2" aria-label="Product brand"><%= product.brand.name.upcase %></h6>
-        <h5 class="card-title" aria-label="Product name"><%= product.name %></h5>
+        <h6 class="card-subtitle mb-2" aria-label="Marca del reloj"><%= product.brand.name.upcase %></h6>
+        <h5 class="card-title" aria-label="Nombre del reloj"><%= product.name %></h5>
 
         <% if product.discount && product.discount > 0 %>
-          <h6 class="card-subtitle mb-2 text-muted original-price" aria-label="Price"><%= format_price product.price %></h6>
-          <h6 class="card-subtitle mb-2 text-muted price-with-discount" aria-label="Discount price"><%= format_price(apply_discount product.price, product.discount) %></h6>
+          <h6 class="card-subtitle mb-2 text-muted original-price" aria-label="Precio"><%= format_price product.price %></h6>
+          <h6 class="card-subtitle mb-2 text-muted price-with-discount" aria-label="Precio con descuento"><%= format_price(apply_discount product.price, product.discount) %></h6>
         <% else %>
-          <h6 class="card-subtitle mb-2 text-muted" aria-label="Total price"><%= format_price product.price %></h6>
+          <h6 class="card-subtitle mb-2 text-muted" aria-label="Precio total"><%= format_price product.price %></h6>
         <% end %>
 
-        <p class="card-test" aria-label="Product description"><%= crop_text product.description %></p>
+        <p class="card-test" aria-label="Descripción del producto"><%= crop_text product.description %></p>
       </div>
     </div>
   <% end %>
