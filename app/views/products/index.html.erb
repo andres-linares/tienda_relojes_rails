@@ -13,7 +13,7 @@
   <% Product.all.each do |product| %>
     <div class="card bg-light mb-4 mr-4" style="width: 18rem">
       <% if product.discount && product.discount > 0 %>
-        <span class="price-badge" arial="Product current discount">
+        <span class="price-badge" aria-label="Product current discount">
           <%= product.discount %>% Descuento
         </span>
       <% end %>
