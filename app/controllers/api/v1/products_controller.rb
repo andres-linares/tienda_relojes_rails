@@ -1,10 +1,9 @@
 module Api
   module V1
-    class ProductsController < ApiController
-
+    class ProductsController < ActionController::Base
       def index
-        @products = Product.all
-        render json: @products
+        render json: Product.all, status: :ok
       end
+    end
   end
 end
